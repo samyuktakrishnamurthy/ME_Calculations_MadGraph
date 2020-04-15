@@ -9,6 +9,8 @@ import numpy as np
 from ROOT import *
 import os
 import shutil
+from datetime import datetime
+start=datetime.now()
 
 #Minitree we are reading from
 
@@ -270,6 +272,8 @@ def Calculate_ME(event_num, loop_size, pathToFile, process):
     subprocess.call(["scp", minitree ,"abc-at13:/gpfs3/umass/HZZ/MG_0j_Ana_Offshell/post_process_minitrees/"])
     subprocess.call(["rm","-rf",output_tree])
 
+    print (datetime.now()-start)
+    
 if __name__ == "__main__":
     import sys
     Calculate_ME(int(sys.argv[1]),int(sys.argv[2]),str(sys.argv[3]),str(sys.argv[4]))
